@@ -32,8 +32,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build Debug APK
-        run: gradle --no-daemon assembleDebug
+- name: Build Debug APK
+  run: |
+    wget -q https://services.gradle.org/distributions/gradle-8.9-bin.zip
+    unzip -q gradle-8.9-bin.zip
+    ./gradle-8.9/bin/gradle --no-daemon assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
